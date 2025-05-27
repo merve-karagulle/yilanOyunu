@@ -41,8 +41,6 @@ Bu proje, **gömülü sistemler** ve **Python ile oyun programlama** alanında �
 snake_game.py dosyasını çalıştır:
 
 bash
-Kopyala
-Düzenle
 python snake_game.py
 🎮 Oyun Kontrolleri
 Joystick konumlarına göre yılan şu şekilde hareket eder:
