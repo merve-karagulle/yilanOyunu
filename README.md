@@ -40,8 +40,9 @@ Bu proje, **gömülü sistemler** ve **Python ile oyun programlama** alanında �
    pip install pygame pyserial
 snake_game.py dosyasını çalıştır:
 
-bash
-python snake_game.py
+'''bash
+
+            python snake_game.py
 🎮 Oyun Kontrolleri
 Joystick konumlarına göre yılan şu şekilde hareket eder:
 
