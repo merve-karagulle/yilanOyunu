@@ -3,44 +3,44 @@ import serial
 import random
 import time
 
-# --- Seri Port Ayarlarý ---
+# --- Seri Port AyarlarÃ½ ---
 SERIAL_PORT = "COM4"
 BAUD_RATE = 9600
 
 try:
     ser = serial.Serial(SERIAL_PORT, BAUD_RATE, timeout=0.1)
-    print(f"{SERIAL_PORT} portu açýldý.")
+    print(f"{SERIAL_PORT} portu aÃ§Ã½ldÃ½.")
 except:
-    print(f"{SERIAL_PORT} portu açýlamadý!")
+    print(f"{SERIAL_PORT} portu aÃ§Ã½lamadÃ½!")
     ser = None
 
-# --- Pygame Baþlat ---
+# --- Pygame BaÃ¾lat ---
 pygame.init()
 
 dis_width = 600
 dis_height = 400
 dis = pygame.display.set_mode((dis_width, dis_height))
-pygame.display.set_caption('Joystick Kontrollü Yýlan Oyunu')
+pygame.display.set_caption('Joystick KontrollÃ¼ YÃ½lan Oyunu')
 
 clock = pygame.time.Clock()
 
-# Renkler (yumuþak pastel tonlar)
+# Renkler (yumuÃ¾ak pastel tonlar)
 white = (245, 245, 245)
 yellow = (255, 223, 100)
 black = (30, 30, 30)
 red = (220, 90, 90)
 green = (100, 220, 100)
-blue_start = (100, 150, 220)  # degrade baþlangýç
-blue_end = (50, 90, 180)      # degrade bitiþ
+blue_start = (100, 150, 220)  # degrade baÃ¾langÃ½Ã§
+blue_end = (50, 90, 180)      # degrade bitiÃ¾
 
-snake_block = 15  # biraz daha büyük bloklar
+snake_block = 15  # biraz daha bÃ¼yÃ¼k bloklar
 snake_speed = 15
 
 font_style = pygame.font.SysFont("bahnschrift", 25)
 score_font = pygame.font.SysFont("comicsansms", 35, bold=True)
 
 def draw_background():
-    # Basit dikey degrade arka plan çizimi
+    # Basit dikey degrade arka plan Ã§izimi
     for i in range(dis_height):
         ratio = i / dis_height
         r = int(blue_start[0] * (1 - ratio) + blue_end[0] * ratio)
@@ -53,7 +53,7 @@ def Your_score(score):
     dis.blit(value, [10, 10])
 
 def rounded_rect(surface, color, rect, radius=8):
-    # Köþeleri yuvarlatýlmýþ dikdörtgen çizme fonksiyonu
+    # KÃ¶Ã¾eleri yuvarlatÃ½lmÃ½Ã¾ dikdÃ¶rtgen Ã§izme fonksiyonu
     x, y, w, h = rect
     pygame.draw.rect(surface, color, (x + radius, y, w - 2*radius, h))
     pygame.draw.rect(surface, color, (x, y + radius, w, h - 2*radius))
@@ -64,25 +64,25 @@ def rounded_rect(surface, color, rect, radius=8):
 
 def our_snake(snake_block, snake_list):
     for x in snake_list:
-        # Yýlan parçalarýný hafif gölge efektiyle yuvarlatýlmýþ bloklar olarak çiz
+        # YÃ½lan parÃ§alarÃ½nÃ½ hafif gÃ¶lge efektiyle yuvarlatÃ½lmÃ½Ã¾ bloklar olarak Ã§iz
         rounded_rect(dis, green, [x[0], x[1], snake_block, snake_block], radius=6)
-        # Gölgeler için biraz daha koyu bir kenar çizimi (basit efekt)
+        # GÃ¶lgeler iÃ§in biraz daha koyu bir kenar Ã§izimi (basit efekt)
         pygame.draw.rect(dis, (50, 150, 50), [x[0], x[1], snake_block, snake_block], 2, border_radius=6)
 
 def message(msg, color, y_displace=0):
-    # Mesaj kutusunu arka planý koyu, yarý saydam yapalým
+    # Mesaj kutusunu arka planÃ½ koyu, yarÃ½ saydam yapalÃ½m
     msg_surface = font_style.render(msg, True, color)
     box_w = msg_surface.get_width() + 40
     box_h = msg_surface.get_height() + 20
     box_x = dis_width / 2 - box_w / 2
     box_y = dis_height / 2 + y_displace - box_h / 2
 
-    # Yarý saydam arka plan kutusu
+    # YarÃ½ saydam arka plan kutusu
     s = pygame.Surface((box_w, box_h), pygame.SRCALPHA)
-    s.fill((30, 30, 30, 180))  # siyah yarý saydam
+    s.fill((30, 30, 30, 180))  # siyah yarÃ½ saydam
     dis.blit(s, (box_x, box_y))
 
-    # Yazýyý kutunun üstüne çiz
+    # YazÃ½yÃ½ kutunun Ã¼stÃ¼ne Ã§iz
     dis.blit(msg_surface, (dis_width / 2 - msg_surface.get_width() / 2, dis_height / 2 + y_displace - msg_surface.get_height() / 2))
 
 def read_joystick_direction():
@@ -132,7 +132,7 @@ def gameLoop():
 
         while game_close:
             draw_background()
-            message("Kaybettin! C - Çýkýþ, R - Tekrar Oyna", red)
+            message("Kaybettin! C - Ã‡Ã½kÃ½Ã¾, R - Tekrar Oyna", red)
             Your_score(score)
             pygame.display.update()
 
@@ -183,7 +183,7 @@ def gameLoop():
         y1 += y1_change
 
         draw_background()
-        # Yemeyi kare ve kýrmýzý yapalým
+        # Yemeyi kare ve kÃ½rmÃ½zÃ½ yapalÃ½m
         pygame.draw.rect(dis, red, [foodx, foody, snake_block, snake_block])
 
         snake_Head = [x1, y1]
