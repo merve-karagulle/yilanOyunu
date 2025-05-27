@@ -29,7 +29,7 @@ Bu proje, **gömülü sistemler** ve **Python ile oyun programlama** alanında �
 ### Arduino Tarafı
 
 1. Arduino IDE’yi aç.
-2. `arduino_code.ino` dosyasını yükle.
+2. `yilanOyunuIde.ino` dosyasını yükle.
 3. Arduino'ya uygun portu seç ve kodu yükle.
 
 ### Python Tarafı
@@ -42,7 +42,7 @@ snake_game.py dosyasını çalıştır:
 
 '''bash
 
-            python snake_game.py
+            python yilanOyunu.py
 🎮 Oyun Kontrolleri
 Joystick konumlarına göre yılan şu şekilde hareket eder:
 
